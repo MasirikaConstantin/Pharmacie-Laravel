@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Styles personnalisés pour les thèmes */
+body {
+    @apply bg-light-background text-light-text dark:bg-dark-background dark:text-dark-text;
+}
+
+
+/* Animation */
+.icon-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50px;
+    height: 24px;
+    overflow: hidden;
+}
+
+.icon-container svg {
+    position: absolute;
+    transition: transform 0.3s ease;
+}
+
+.icon-sun {
+    transform: translateX(0);
+}
+
+.icon-moon {
+    transform: translateX(50px);
+}
+
+.dark .icon-sun {
+    transform: translateX(-50px);
+}
+
+.dark .icon-moon {
+    transform: translateX(0);
+}
