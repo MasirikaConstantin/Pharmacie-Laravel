@@ -66,7 +66,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/editusers/{id}', [AdminControl::class,'BloquerUser'])->name('bloqueruser');
     Route::post('/stock', [AdminControl::class,'Produit']);
 
-    Route::get('/produit/{id}',[AdminControl::class,'editproduit'])->name('editproduit');
     Route::post('/produit/{id}',[AdminControl::class,'editpro']);
     Route::put('/categorie',[AdminControl::class,'creercategorie'])->name("creercategorie");
     //Route::put('/stocks', [AdminControl::class,'ProduitCreate'])->name('ProduitCreate');

@@ -10,109 +10,12 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
 @php
     $i=1;
+    $k=0;
 @endphp
                 
 
 
-                    <!--section class="bg-white py-2 antialiased dark:bg-gray-900 md:py-6">
-                        <form action="#" class=" mx-auto max-w-screen-xl  2xl:px-6">
-                          <div class="mt-12 sm:mt-8 lg:flex lg:items-start lg:gap-12 xl:gap-16">
-                            <div class="min-w-0 flex-1 space-y-8">
-                              <div class="space-y-4">
-                                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Les produits</h2>
-                      
-                                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                        <tr>
-                                            <th scope="col" class="px-6 py-3">
-                                                {{__('Nom du Produit')}}
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                {{__('Prix')}}
-
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                {{__('Quantité')}}
-
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                {{('Categorie')}}
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                <span class="sr-only">Edit</span>
-                                            </th>
-                                           
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($produits as $p )
-                                            
-                                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    {{Str::limit($p->nom,50)}}
-                                                </th>
-                                                <td class="px-6 py-4">
-                                                    {{$p->prix}}
-
-                                                </td>
-                                                <td class="px-6 py-4">
-                                                    {{$p->quantite}}
-
-                                                </td>
-                                                <td class="px-6 py-4">
-                                                    {{$p->category->nom}}
-                                                </td>
-                                                <td class="px-6 py-4 text-right">
-                                                    <a href="{{route('editproduit',['id'=>$p->id])}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ajouter</a>
-                                                </td>
-                                                
-                                            </tr>
-                                        @endforeach
-                                        
-                                    </tbody>
-                                </table>
-                              </div>
-                      
-                            </div>
-                      
-                            <div class="mt-6 w-full space-y-6 sm:mt-8 lg:mt-0 lg:max-w-xs xl:max-w-md">
-                              <div class="flow-root">
-                                <div class="-my-3 divide-y divide-gray-200 dark:divide-gray-800">
-                                  <dl class="flex items-center justify-between gap-4 py-3">
-                                    <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Subtotal</dt>
-                                    <dd class="text-base font-medium text-gray-900 dark:text-white">$8,094.00</dd>
-                                  </dl>
-                      
-                                  <dl class="flex items-center justify-between gap-4 py-3">
-                                    <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Savings</dt>
-                                    <dd class="text-base font-medium text-green-500">0</dd>
-                                  </dl>
-                      
-                                  <dl class="flex items-center justify-between gap-4 py-3">
-                                    <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Store Pickup</dt>
-                                    <dd class="text-base font-medium text-gray-900 dark:text-white">$99</dd>
-                                  </dl>
-                      
-                                  <dl class="flex items-center justify-between gap-4 py-3">
-                                    <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
-                                    <dd class="text-base font-medium text-gray-900 dark:text-white">$199</dd>
-                                  </dl>
-                      
-                                  <dl class="flex items-center justify-between gap-4 py-3">
-                                    <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
-                                    <dd class="text-base font-bold text-gray-900 dark:text-white">$8,392.00</dd>
-                                  </dl>
-                                </div>
-                              </div>
-                      
-                              <div class="space-y-3">
-                                <button type="submit" class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Payment</button>
-                      
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </section-->
+                    
 
                       <section class="bg-white antialiased dark:bg-gray-900 md:py-2">
                         <div class="mx-auto max-w-screen-2xl px-2 2xl:px-0">
@@ -155,16 +58,23 @@
                                             <th scope="col" class="px-6 py-3">
                                                 <span class="sr-only">Edit</span>
                                             </th>
-                                           
+                                            <th scope="col" class="px-6 py-3">
+                                              <span class="sr-only"></span>
+                                          </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($produits as $p )
+                                        @php
+                                          $k++
+                                        @endphp
+                                        
                                         
                                             <tr id="tr" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                             <td class="px-6 py-4" >{{$i++}}</td>
                                                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     {{Str::limit($p->nom,50)}}
+
                                                 </td>
                                                 <td class="px-6 py-4">
                                                     {{$p->prix}}
@@ -180,8 +90,75 @@
                                                 <td class="px-6 py-4 text-right">
                                                     <a href="{{route('editproduit',['id'=>$p->id])}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ajouter</a>
                                                 </td>
-                                                
+                                                <td class="px-6 py-4">
+                                                  <button data-modal-target="crud-modal{{$k}}" data-modal-toggle="crud-modal{{$k}}" type="button" class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"/></svg>
+                                                    
+                                                    </button>
+                                                </td>
                                             </tr>
+
+
+
+
+
+<!-- Main modal -->
+<div  id="crud-modal{{$k}}" tabindex="-1" aria-hidden="true" class="hidden  overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+  <div  class="relative p-8 w-full max-w-md max-h-full">
+      <!-- Modal content -->
+      <div style="padding: 10px!important" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <!-- Modal header -->
+          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                  Détails du Produit
+              </h3>
+              <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+                  <span class="sr-only">Close modal</span>
+              </button>
+          </div>
+          <!-- Modal body -->
+          <form class="p-4 md:p-5">
+              <div class="grid gap-4 mb-4 grid-cols-2">
+                  <div class="col-span-2">
+                      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name </label>
+                      
+                      <textarea id="description" rows="2" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here" disabled>{{$p->nom}} </textarea>                    
+
+                  </div>
+                  <div class="col-span-2 sm:col-span-1">
+                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                    <input type="number" name="price" id="price" value="{{$p->prix}}" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
+                </div>
+                
+                  <div class="col-span-2 sm:col-span-1">
+                      <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                      <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                          
+                        <option selected="">{{$p->category->nom}}</option>
+                          
+                      </select>
+                  </div>
+                  <div class="col-span-2">
+                    <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                    <input type="text" name="name" id="name" value="{{$p->quantite}}" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                </div>
+                  <div class="col-span-2">
+                      <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Description</label>
+                      <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here" disabled>{{$p->commentaire}}</textarea>                    
+                  </div>
+              </div>
+              
+          </form>
+      </div>
+  </div>
+</div> 
+
+
+        
+
                                         @endforeach
                                         
                                     </tbody>

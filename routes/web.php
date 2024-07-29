@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+Route::get('/produit/{id}',[AdminControl::class,'editproduit'])->name('editproduit')->middleware(['auth', 'verified','rolemanager:admin']);
 
 require __DIR__.'/auth.php';
 /*Route::prefix('login')->name("user.")->controller(UserController::class)->group(function (){
