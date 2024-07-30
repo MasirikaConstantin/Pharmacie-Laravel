@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminControl;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Models\Categorie;
@@ -36,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::get('/produit/{id}',[AdminControl::class,'editproduit'])->name('editproduit')->middleware(['auth', 'verified','rolemanager:admin']);
-
+Route::get('/book/{id}', [OrderController::class, 'addBooktoCart'])->name('addbook.to.cart');
 require __DIR__.'/auth.php';
 /*Route::prefix('login')->name("user.")->controller(UserController::class)->group(function (){
     Route::get('/', 'index' )->name("login");
