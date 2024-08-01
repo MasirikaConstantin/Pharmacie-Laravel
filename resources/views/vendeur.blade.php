@@ -241,11 +241,6 @@
                                                                                         </td>
                                                                                         
                                                                                     </tr>
-                                        
-                                        
-                                        
-                                        
-                                        
                                                                                 @endforeach
                                                                               @endif
                                                                                 
@@ -254,9 +249,6 @@
                                                                       </div>                           
                       
                                   <hr class="border-gray-200 dark:border-gray-600" />
-                      
-                                  
-                      
                                   <div class="flex space-x-4">
                                     <a href="#" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
                                       <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
