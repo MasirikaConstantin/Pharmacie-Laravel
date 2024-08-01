@@ -18,8 +18,6 @@
           </div>
           
           
-          
-          
           <hr class="my-4"> 
         
         </form>

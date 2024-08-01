@@ -183,9 +183,7 @@
                       
                               <div class="mt-6 w-full md:mt-8 lg:mt-0 lg:max-w-lg">
                                 <div class="space-y-5 rounded-lg bg-gray-50 p-6 dark:bg-gray-700">
-                                  <a href="#" title="" class="text-base font-medium text-primary-700 underline hover:no-underline dark:text-primary-500"> Sign In or Create Account {{ count((array) session('cart')) }}</a>
                       
-                                  <hr class="border-gray-200 dark:border-gray-600" />
                                   <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     <svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
                                     <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
@@ -196,17 +194,64 @@
                                       </span>
                                                                       </button>
                       
-                                  <form action="#">
-                                    <div class="items-end space-y-4 sm:flex sm:space-y-0">
-                                      <div class="relative mr-3 w-full sm:w-96 lg:w-full">
-                                        <label for="email" class="mb-2 block text-sm font-medium text-gray-900 dark:text-gray-300"> Get the latest deals and more. </label>
-                                        <input class="block w-full rounded-lg border border-gray-300 bg-white p-3 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-500 dark:bg-gray-600 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500 sm:w-96 lg:w-full" placeholder="Enter your email address" type="email" id="email" required="" />
-                                      </div>
-                                      <div>
-                                        <button type="submit" class="w-full cursor-pointer rounded-lg bg-primary-700 px-5 py-3 text-center text-sm font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Subscribe</button>
-                                      </div>
-                                    </div>
-                                  </form>
+                                                                      <div class=" relative overflow-x-auto shadow-md sm:rounded-lg items-start gap-8 md:gap-10 lg:flex 2xl:gap-28">
+                                                                        <table  class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                                                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                                                <tr>
+                                                                                    
+                                                                                    <th scope="col" class="px-6 py-3">
+                                                                                        {{__('Nom du Produit')}}
+                                                                                    </th>
+                                                                                    <th scope="col" class="px-6 py-3">
+                                                                                        {{__('Prix')}}
+                                        
+                                                                                    </th>
+                                                                                    <th scope="col" class="px-6 py-3">
+                                                                                        {{__('Quantité')}}
+                                                                                    </th>
+                                                                                    <th scope="col" class="px-6 py-3">
+                                                                                      {{__('Total')}}
+                                                                                  </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                              @if (session('cart'))
+                                                                                
+                                                                                @foreach (session('cart') as $id => $details)
+                                                                                                                                                             
+                                                                                    <tr rowId="{{$id}}"  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                                                                    <td class="px-6 py-4" >
+                                                                                      {{(Str::limit($details['nom'],20))}}
+                                                                                      </td>
+                                                                                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                                                          {{$details['prix']}}
+                                        
+                                                                                        </td>
+                                                                                        <td class="px-6 py-4">
+                                                                                          {{$details['quantite']}}
+                                                                                          
+                                                                                        </td>
+                                                                                        <td class="px-6 py-4">
+                                                                                          {{$details['quantite']*$details['prix']}}
+                                                                                        </td>
+                                                                                        <td class="px-6 py-4">
+                                                                                        </td>
+                                                                                        <td class="px-6 py-4 text-right">
+                                                                                            <a href="{{ route('addbook.to.cart',2) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ajouter</a>
+                                                                                        </td>
+                                                                                        
+                                                                                    </tr>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                                                                @endforeach
+                                                                              @endif
+                                                                                
+                                                                            </tbody>
+                                                                        </table>
+                                                                      </div>                           
                       
                                   <hr class="border-gray-200 dark:border-gray-600" />
                       

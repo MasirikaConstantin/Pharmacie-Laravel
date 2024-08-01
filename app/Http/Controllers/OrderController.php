@@ -68,12 +68,12 @@ class OrderController extends Controller
         $book = Produit::findOrFail($id);
         $cart = session()->get('cart', []);
         if(isset($cart[$id])) {
-            $cart[$id]['quantity']++;
+            $cart[$id]['quantite']++;
         } else {
             $cart[$id] = [
-                "name" => $book->name,
-                "quantity" => 1,
-                "price" => $book->price,
+                "nom" => $book->nom,
+                "quantite" => 1,
+                "prix" => $book->prix,
                 "image" => $book->image
             ];
         }
