@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Produit;
 use Illuminate\Http\Request;
 
+use function Ramsey\Uuid\v1;
+
 class OrderController extends Controller
 {
     /**
@@ -80,5 +82,8 @@ class OrderController extends Controller
         session()->put('cart', $cart);
         
         return redirect()->back()->with('success', 'Book has been added to cart!');
+    }
+    public function panierv(){
+        return view('panier');
     }
 }

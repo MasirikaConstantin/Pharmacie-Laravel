@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/produit/{id}',[AdminControl::class,'editproduit'])->name('editproduit')->middleware(['auth', 'verified','rolemanager:admin']);
 Route::get('/book/{id}', [OrderController::class, 'addBooktoCart'])->name('addbook.to.cart');
+Route::get('/panier', [OrderController::class, 'panierv'])->name('panierv');
 require __DIR__.'/auth.php';
 /*Route::prefix('login')->name("user.")->controller(UserController::class)->group(function (){
     Route::get('/', 'index' )->name("login");
