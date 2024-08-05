@@ -21,21 +21,21 @@
                         <div class="mx-auto max-w-screen-2xl px-2 2xl:px-0">
 
                           @if (session('success'))
-                    <div id="alert-border-3" class="flex items-center p-4 mb-4 border-t-4 border-green-300 bg-green-50 dark:text-green-400  dark:border-green-800" role="alert">
-                        <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                        </svg>
-                        <div class="ms-3 text-sm font-medium">
-                          {{session('success')}}
-                        </div>
-                        <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-3" aria-label="Close">
-                          <span class="sr-only">Dismiss</span>
-                          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                          </svg>
-                        </button>
-                    </div>
-        @endif
+                            <div id="alert-border-3" class="flex items-center p-4 mb-4 border-t-4 border-green-300 bg-green-50 dark:text-green-400  dark:border-green-800" role="alert">
+                                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                                </svg>
+                                <div class="ms-3 text-sm font-medium">
+                                  {{session('success')}}
+                                </div>
+                                <button type="button" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-gray-700"  data-dismiss-target="#alert-border-3" aria-label="Close">
+                                  <span class="sr-only">Dismiss</span>
+                                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                  </svg>
+                                </button>
+                            </div>
+                          @endif
 
 
 
@@ -74,38 +74,30 @@
                                             <th scope="col" class="px-6 py-3">
                                                 {{('Categorie')}}
                                             </th>
-                                            <th scope="col" class="px-6 py-3">
-                                                <span class="sr-only">Edit</span>
-                                            </th>
-                                            <th scope="col" class="px-6 py-3">
-                                              <span class="sr-only"></span>
-                                          </th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
-                                        
+                                      @if (session('cart'))
+                                                                                
+                                        @foreach (session('cart') as $details => $p)                                        
                                         
                                             <tr id="tr" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                             <td class="px-6 py-4" >{{$i++}}</td>
                                                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                    {{Str::limit($p->nom,50)}}
+                                                    {{Str::limit($p['nom'],50)}}
 
                                                 </td>
                                                 <td class="px-6 py-4">
-                                                    {{$p->prix}}
+                                                    {{$p['prix']}}
 
                                                 </td>
                                                 <td class="px-6 py-4">
-                                                    {{$p->quantite}}
+                                                    {{$p['quantite']}}
 
                                                 </td>
-                                                <td class="px-6 py-4">
-                                                    {{$p->category->nom}}
-                                                </td>
-                                                <td class="px-6 py-4 text-right">
-                                                    <a href="{{ route('addbook.to.cart', $p->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ajouter</a>
-                                                </td>
+                                                
+                                                
                                                 <td class="px-6 py-4">
                                                   <button data-modal-target="crud-modal{{$k}}" data-modal-toggle="crud-modal{{$k}}" type="button" class="px-3 py-2 text-sm font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 ">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"/></svg>
@@ -141,30 +133,29 @@
                                                                     <div class="col-span-2">
                                                                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name </label>
                                                                         
-                                                                        <textarea id="description" rows="2" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here" disabled>{{$p->nom}} </textarea>                    
+                                                                        <textarea id="description" rows="2" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here" disabled>{{$p['nom']}} </textarea>                    
 
                                                                     </div>
                                                                     <div class="col-span-2 sm:col-span-1">
                                                                       <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                                                                      <input type="number" name="price" id="price" value="{{$p->prix}}" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
+                                                                      <input type="number" name="price" id="price" value="{{$p['prix']}}" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
+                                                                    </div>
+                                                                  
+                                                                    
+                                                                    <div class="col-span-2 sm:col-span-1">
+                                                                      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('Quantité')}}</label>
+                                                                      <input type="text" name="name" id="name" value="{{$p['quantite']}}" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                                                                    </div>
+
+
+
+                                                                    <div class="col-span-2 sm:col-span-1">
+                                                                      <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{__('Total')}}</label>
+                                                                      <input type="number" name="price" id="price" value="{{$p['quantite']*$p['prix']}}" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
                                                                   </div>
                                                                   
-                                                                    <div class="col-span-2 sm:col-span-1">
-                                                                        <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                                                                        <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                                                            
-                                                                          <option selected="">{{$p->category->nom}}</option>
-                                                                            
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-span-2">
-                                                                      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                                                                      <input type="text" name="name" id="name" value="{{$p->quantite}}" disabled class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
-                                                                  </div>
-                                                                    <div class="col-span-2">
-                                                                        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Description</label>
-                                                                        <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here" disabled>{{$p->commentaire}}</textarea>                    
-                                                                    </div>
+                                                                    
+                                                                   
                                                                 </div>
                                                                 
                                                             </form>
@@ -172,7 +163,8 @@
                                                     </div>
                                                   </div> 
 
-
+                                                @endforeach
+                                              @endif
                                         
                                     </tbody>
                                 </table>
